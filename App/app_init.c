@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   app_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnabil <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 15:24:37 by rnabil            #+#    #+#             */
-/*   Updated: 2022/03/22 15:48:27 by rnabil           ###   ########.fr       */
+/*   Created: 2022/05/27 16:44:24 by rnabil            #+#    #+#             */
+/*   Updated: 2022/05/27 16:46:06 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	SO_LONG_H
-# define SO_LONG_H
+#include "../header/so_long.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include "mlx.h"
-
-typedef	struct map
+t_app	*app_init(int width, int height)
 {
-	//stuff
-}	t_map;
+	t_app	*app;
 
-typedef struct app{
-	void			*mlx_pointer;
-	void			*window;
-	t_map			*map;
-}	t_app;
-
-t_app	*app_init(int width, int height);
-
-#endif
+	app = (t_app*)malloc(sizeof(t_app));
+	app->mlx_pointer = mlx_init();
+	app->window = mlx_new_window(app->mlx_pointer, width, height, "so_long_window");
+	return (app);
+}

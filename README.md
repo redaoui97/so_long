@@ -16,5 +16,7 @@ Cursus's project so long where you have to make a 2D game
 	<h4>Introduction</h4>
 	   MiniLibX is a tiny graphics library which allows you to do the most basic things for rendering something in screens without knowledge of the X-Window and Cocoa. It proves so called simmple window creation, a questionable drawing too; half-ass imagine functions and a weird event management system.
 	<br>
-hh
+	<h4>Start</h4>
+		I foud this repo very useful for getting started with mlx, it's a nice introduction for mlx, and getting familiar with mlx functionalities: Hooks, Images, Colors, Programming...
+	
 </p>
