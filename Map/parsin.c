@@ -12,4 +12,7 @@
 
 #include "../header/so_long.h"
 
+void    parsin(int **map)
+{
 
+}

@@ -24,7 +24,7 @@ AR = ar rc
 
 all : $(NAME)
 
-$(NAME) : $(OBJS_main) $(OBJS_app)
+$(NAME) : $(OBJS_main) #$(OBJS_app)
 	$(CC) $^ $(MLX_FLAGS) -o $@
 %.o  : %.c so_long.h
 	gcc $(FLAGS) -c $< -o $@
