@@ -19,14 +19,24 @@
 # include <fcntl.h>
 # include "mlx.h"
 
+# ifndef PIC_SIZE
+# define PIC_SIZE 64
+# endif
+
 typedef	struct map
 {
 	//stuff
 }	t_map;
 
 typedef struct app{
-	void			*mlx_pointer;
+	void			*mlx;
 	void			*window;
+	void			*img;
+	void			*img2;
+	void			*img3;
+	void			*img4;
+	void			*img5;
+	void			*img6;
 	t_map			*map;
 }	t_app;
 

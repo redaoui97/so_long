@@ -15,23 +15,41 @@
 
 int	main(int argc, char **argv)
 {
-	// t_app	*app;
-	void *mlx;
-	void *win;
-	void *img;
-	int i = 32;
+	t_app	*app;
+	int i = 64;
+
+	app = app_init(i, i);
+	if (argc < 2)//< or !=
+		exit(EXIT_FAILURE);
+	parsing(argv[1], &app);
 	
-	// if (argc < 2)//< or !=
-	// 	exit(EXIT_FAILURE);
-	// parsing(argv[1], &app);
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 500, 500, "so long");
-	img = mlx_xpm_file_to_image(mlx, "assets/Player_small.xpm", &i, &i);
-	mlx_put_image_to_window(mlx, win, img, 250, 250);
-	mlx_put_image_to_window(mlx, win, img, 0, 32);
-	mlx_put_image_to_window(mlx, win, img, 32, 0);
-	//mlx_put_image_to_window(mlx, win, img, 32, 32);
+
+	// mlx_put_image_to_window(mlx, win, img, 0, 0);
+
+	// mlx_put_image_to_window(mlx, win, img, 0, 64);
+	// mlx_put_image_to_window(mlx, win, img, 0, 128);
+	// mlx_put_image_to_window(mlx, win, img, 0, 192);
+
+	// mlx_put_image_to_window(mlx, win, img, 64, 0);
+	// mlx_put_image_to_window(mlx, win, img, 128, 0);
+	// mlx_put_image_to_window(mlx, win, img, 192, 0);
+	
+	// mlx_put_image_to_window(mlx, win, img, 192, 192);
+	// mlx_put_image_to_window(mlx, win, img, 192, 128);
+	// mlx_put_image_to_window(mlx, win, img6, 192, 64);
+
+	// mlx_put_image_to_window(mlx, win, img, 128, 192);
+	// mlx_put_image_to_window(mlx, win, img, 64, 192);
+
+	// mlx_put_image_to_window(mlx, win, img2, 128, 64);
+
+	// mlx_put_image_to_window(mlx, win, img3, 64, 64);
+
+	// mlx_put_image_to_window(mlx, win, img4, 64, 128);
+
+	// mlx_put_image_to_window(mlx, win, img5, 128, 128);
+	
 	//mlx_hook(win, );
-	mlx_loop(mlx);
+	//mlx_loop(mlx);
 	return (0);
 }

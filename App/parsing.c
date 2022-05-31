@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_line.c                                         :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnabil <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 15:49:57 by rnabil            #+#    #+#             */
-/*   Updated: 2022/03/22 16:14:02 by rnabil           ###   ########.fr       */
+/*   Created: 2022/05/31 18:48:49 by rnabil            #+#    #+#             */
+/*   Updated: 2022/05/31 18:48:53 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-void	add_line(node **map, char *str)
+void    parsing(char *file_name, t_app *app)
 {
-	node	*new;
+    int     fd;
+    char    *name;
 
-	new = new_node(str);
-
+    name = ft_strjoin("../Map/", file_name);
+    fd = open(name, O_RDWR);
+    free(name);
 }
