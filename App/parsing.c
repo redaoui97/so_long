@@ -12,12 +12,16 @@
 
 #include "../header/so_long.h"
 
-void    parsing(char *file_name, t_app *app)
+void    parsing(char *file_name, t_app **app)
 {
     int     fd;
     char    *name;
+    char    *line;
 
     name = ft_strjoin("../Map/", file_name);
     fd = open(name, O_RDWR);
+    line = get_next_line(fd);
+    printf("%s\n",line);
+    free(line);
     free(name);
 }

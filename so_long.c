@@ -16,15 +16,13 @@
 int	main(int argc, char **argv)
 {
 	t_app	*app;
-	int i = 64;
 
-	app = app_init(i, i);
-	if (argc < 2)//< or !=
-		exit(EXIT_FAILURE);
-	parsing(argv[1], &app);
-	
+	// if (argc < 2)//< or !=
+	// 	exit(EXIT_FAILURE);
+	//parsing(argv[1], &app);
+	app = app_init(256, 256);	
 
-	// mlx_put_image_to_window(mlx, win, img, 0, 0);
+	//mlx_put_image_to_window(app->mlx, app->window, app->img5, 0, 0);
 
 	// mlx_put_image_to_window(mlx, win, img, 0, 64);
 	// mlx_put_image_to_window(mlx, win, img, 0, 128);
@@ -50,6 +48,6 @@ int	main(int argc, char **argv)
 	// mlx_put_image_to_window(mlx, win, img5, 128, 128);
 	
 	//mlx_hook(win, );
-	//mlx_loop(mlx);
+	mlx_loop(app->mlx);
 	return (0);
 }
