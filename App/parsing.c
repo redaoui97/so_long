@@ -18,6 +18,7 @@ void    parsing(char *file_name, t_app **app)
     char    *name;
     char    *line;
 
+    //there is a problem here, can't read the file name
     name = ft_strjoin("../Map/", file_name);
     fd = open(name, O_RDWR);
     line = get_next_line(fd);

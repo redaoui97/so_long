@@ -27,7 +27,6 @@ t_app	*app_init(int width, int height)
 	app->img4 = mlx_xpm_file_to_image(app->mlx, "assets/collectible_small.xpm", &i, &i);
 	app->img5 = mlx_xpm_file_to_image(app->mlx, "assets/open_door.xpm", &i, &i);
 	app->img6 = mlx_xpm_file_to_image(app->mlx, "assets/close_door.xpm", &i, &i);
-	printf("hither %p\n", app->img);
 	mlx_put_image_to_window(app->mlx, app->window, app->img, 0, 0);
 	return (app);
 }
