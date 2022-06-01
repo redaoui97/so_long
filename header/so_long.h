@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdarg.h>
 # include "mlx.h"
 
 # ifndef PIC_SIZE
@@ -39,19 +40,32 @@ typedef	struct map
 typedef struct app{
 	void			*mlx;
 	void			*window;
-	//change names for imgs 
-	void			*img;
-	void			*img2;
-	void			*img3;
-	void			*img4;
-	void			*img5;
-	void			*img6;
-	t_map			*map;
+	void			*wall;
+	void			*ground;
+	void			*player;
+	void			*collectible;
+	void			*open_door;
+	void			*closed_door;
+	char			*map;
 }	t_app;
 
 /*src_functions*/
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *s);
+char	*ft_strtrim(char const *s1, char const *set);
+/*src2_functions*/
+void    error(t_app **app);
+void    clear_app(t_app **app);
+
+/*ft_printf_functions*/
+int	ft_printf(const char *f, ...);
+int	print_str(char *str);
+int	print_nbr(int n);
+int	print_nbr_unsigned(unsigned int n);
+int	print_hex_upper(unsigned int a);
+int	print_hex_lower(unsigned int a);
+int	print_char(char chr);
+int	print_addresse(unsigned long int adr);
 
 /*get_next_line_functions*/
 char	*get_next_line(int fd);

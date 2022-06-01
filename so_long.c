@@ -19,7 +19,8 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)//< or !=
 		exit(EXIT_FAILURE);
-	parsing(argv[1], &app);
+	ft_printf("hello");
+	//parsing(argv[1], &app);
 	app = app_init(256, 256);	
 
 	//mlx_put_image_to_window(app->mlx, app->window, app->img5, 0, 0);
