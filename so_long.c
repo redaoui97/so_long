@@ -19,36 +19,28 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)//< or !=
 		exit(EXIT_FAILURE);
-	ft_printf("hello");
-	//parsing(argv[1], &app);
-	app = app_init(256, 256);	
-
-	//mlx_put_image_to_window(app->mlx, app->window, app->img5, 0, 0);
-
-	// mlx_put_image_to_window(mlx, win, img, 0, 64);
-	// mlx_put_image_to_window(mlx, win, img, 0, 128);
-	// mlx_put_image_to_window(mlx, win, img, 0, 192);
-
-	// mlx_put_image_to_window(mlx, win, img, 64, 0);
-	// mlx_put_image_to_window(mlx, win, img, 128, 0);
-	// mlx_put_image_to_window(mlx, win, img, 192, 0);
-	
-	// mlx_put_image_to_window(mlx, win, img, 192, 192);
-	// mlx_put_image_to_window(mlx, win, img, 192, 128);
-	// mlx_put_image_to_window(mlx, win, img6, 192, 64);
-
-	// mlx_put_image_to_window(mlx, win, img, 128, 192);
-	// mlx_put_image_to_window(mlx, win, img, 64, 192);
-
-	// mlx_put_image_to_window(mlx, win, img2, 128, 64);
-
-	// mlx_put_image_to_window(mlx, win, img3, 64, 64);
-
-	// mlx_put_image_to_window(mlx, win, img4, 64, 128);
-
-	// mlx_put_image_to_window(mlx, win, img5, 128, 128);
+	app = app_init(256, 256);
+	parsing(argv[1], &app);	
 	
 	//mlx_hook(win, );
 	mlx_loop(app->mlx);
+	clear_app(&app);
 	return (0);
 }
+
+//mlx_put_image_to_window(app->mlx, app->window, app->img5, 0, 0);
+// mlx_put_image_to_window(mlx, win, img, 0, 64);
+	// mlx_put_image_to_window(mlx, win, img, 0, 128);
+	// mlx_put_image_to_window(mlx, win, img, 0, 192);
+	// mlx_put_image_to_window(mlx, win, img, 64, 0);
+	// mlx_put_image_to_window(mlx, win, img, 128, 0);
+	// mlx_put_image_to_window(mlx, win, img, 192, 0);
+	// mlx_put_image_to_window(mlx, win, img, 192, 192);
+	// mlx_put_image_to_window(mlx, win, img, 192, 128);
+	// mlx_put_image_to_window(mlx, win, img6, 192, 64);
+	// mlx_put_image_to_window(mlx, win, img, 128, 192);
+	// mlx_put_image_to_window(mlx, win, img, 64, 192);
+	// mlx_put_image_to_window(mlx, win, img2, 128, 64);
+	// mlx_put_image_to_window(mlx, win, img3, 64, 64);
+	// mlx_put_image_to_window(mlx, win, img4, 64, 128);
+	// mlx_put_image_to_window(mlx, win, img5, 128, 128);

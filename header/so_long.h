@@ -24,10 +24,6 @@
 # define PIC_SIZE 64
 # endif
 
-# ifndef MAX_FD
-#  define MAX_FD 65535
-# endif
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE    1
 # endif
@@ -46,13 +42,14 @@ typedef struct app{
 	void			*collectible;
 	void			*open_door;
 	void			*closed_door;
-	char			*map;
+	char			**map;
 }	t_app;
 
 /*src_functions*/
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *s);
 char	*ft_strtrim(char const *s1, char const *set);
+
 /*src2_functions*/
 void    error(t_app **app);
 void    clear_app(t_app **app);
