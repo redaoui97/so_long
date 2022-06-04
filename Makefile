@@ -14,7 +14,7 @@ CC = gcc
 FLAGS = -Wall -Werror -Wextra -Imlx
 MLX_FLAGS = -framework OpenGL -framework AppKit -lmlx
 FUNCTIONS_main = so_long 
-FUNCTIONS_app = App/app_init App/parsing
+FUNCTIONS_app = App/app_init App/parsing App/parsing_src
 FUNCTIONS_src = src/src_functions src/get_next_line src/get_next_line_utils \
 				src/src_functions2
 FUNCTIONS_printf = ft_printf/ft_printf  \

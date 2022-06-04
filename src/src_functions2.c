@@ -20,8 +20,9 @@ void	clear_app(t_app **app)
 	if ((*app)->map)
 	{
 		while ((*app)->map[i])
-			free((*app)->map[i++]);
-				free((*app)->map);
+			if ((*app)->map[i])
+				//free((*app)->map[i++]);
+				printf("%s\n",(*app)->map[i++]);
 	}
 	free(*app);
 }
