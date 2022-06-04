@@ -12,6 +12,25 @@
 
 #include "../header/so_long.h"
 
+void	calculate_collecs(t_app **app)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while ((*app)->map[i])
+	{
+		j = 0;
+		while ((*app)->map[i][j])
+		{
+			if ((*app)->map[i][j] == 'c' || (*app)->map[i][j] == 'C')
+				(*app)->collecs++;
+			j++;
+		}
+		i++;
+	}
+}
+
 static void	*find_box(t_app **app, char chr)
 {
 	if (chr == 'p' || chr == 'P')
@@ -40,9 +59,10 @@ void	draw_win(t_app **app)
 		while ((*app)->map[i][j])
 		{
 			box = find_box(&*app, (*app)->map[i][j]);
-			mlx_put_image_to_window((*app)->mlx, (*app)->window, box, i * PIC_SIZE, j * PIC_SIZE);
+			mlx_put_image_to_window((*app)->mlx, (*app)->window, box, j * PIC_SIZE, i * PIC_SIZE);
 			j++;
 		}
 		i++;
 	}
+	calculate_collecs(&*app);
 }

@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   set_move.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnabil <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 14:38:45 by rnabil            #+#    #+#             */
-/*   Updated: 2022/05/27 14:40:03 by rnabil           ###   ########.fr       */
+/*   Created: 2022/06/04 22:13:14 by rnabil            #+#    #+#             */
+/*   Updated: 2022/06/04 22:15:59 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header/so_long.h"
+#include "../header/so_long.h"
 
-
-int	main(int argc, char **argv)
+int	set_move(t_app **app, int key)
 {
-	t_app	*app;
-
-	if (argc != 2)
-		exit(EXIT_FAILURE);
-	app = app_init(256, 256);
-	parsing(argv[1], &app);
-	open_window(&app, "so long");
-	draw_win(&app);
-	mlx_hook(app->window, 2, (1L << 3), set_move, &app);
-	mlx_loop(app->mlx);
-	clear_app(&app);
+	if (key == 13)
+		move_up(&*app);
+	// if (key == 0)
+	// 	move_left(*app);
+	// if (key == 1)
+	// 	move_down(*app);
+	// if (key == 2)
+	// 	move_right(*app);
+	// if (key == 53)
+	// 	end_game(*app, 53);
+	// if (key == 13 || key == 0 || key == 1 || key == 2)
+	// 	draw_win(&app);
 	return (0);
 }

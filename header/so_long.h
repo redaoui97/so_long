@@ -43,6 +43,8 @@ typedef struct app{
 	void			*open_door;
 	void			*closed_door;
 	char			**map;
+	int				moves;
+	int				collecs;
 }	t_app;
 
 /*src_functions*/
@@ -83,4 +85,9 @@ void	check_collecs(t_app **app, int size, int width);
 
 /*drawing_functions*/
 void	draw_win(t_app **app);
+
+/*moves_functions*/
+int		set_move(t_app **app, int key);
+void	move_up(t_app **app);
+void	find_player(t_app **app, int *i, int *j);
 #endif
