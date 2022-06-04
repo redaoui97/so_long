@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   src_functions2.c                                   :+:      :+:    :+:   */
+/*   open_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnabil <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 18:34:17 by rnabil            #+#    #+#             */
-/*   Updated: 2022/06/01 18:35:15 by rnabil           ###   ########.fr       */
+/*   Created: 2022/06/04 18:35:22 by rnabil            #+#    #+#             */
+/*   Updated: 2022/06/04 18:35:40 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-void	clear_app(t_app **app)
+int	get_width(t_app **app)
 {
 	int	i;
 
 	i = 0;
-	if ((*app)->map)
-	{
-		while ((*app)->map[i])
-			if ((*app)->map[i])
-				free((*app)->map[i++]);
-	}
+	while ((*app)->map[0][i])
+		i++;
+	return (i);
 }
 
-void	error(t_app **app)
+int	get_height(t_app **app)
 {
-	if ((*app)->map)
-		clear_app(&*app);
-	free(*app);
-	ft_printf("Error\n");
-	exit(EXIT_FAILURE);
+	int	i;
+
+	i = 0;
+	while ((*app)->map[i])
+		if ((*app)->map[i])
+			i++;
+	return (i);
+}
+
+void	open_window(t_app **app, char *win_name)
+{
+	int	width;
+	int	height;
+
+	width = get_width(&*app);
+	height = get_height(&*app);
+	(*app)->window = mlx_new_window((*app)->mlx, width * PIC_SIZE,
+			height * PIC_SIZE, win_name);
 }

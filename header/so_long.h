@@ -78,6 +78,9 @@ char	*ft_strdup(const char *s1);
 /*App_functions*/
 t_app	*app_init(int width, int height);
 void    parsing(char *file_name, t_app **app);
-void	check_collecs_src(char chr, int *collecs, int *player, int *exit);
+void	open_window(t_app **app, char *win_name);
 void	check_collecs(t_app **app, int size, int width);
+
+/*drawing_functions*/
+void	draw_win(t_app **app);
 #endif

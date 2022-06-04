@@ -20,10 +20,11 @@ int	main(int argc, char **argv)
 	if (argc < 2)//< or !=
 		exit(EXIT_FAILURE);
 	app = app_init(256, 256);
-	parsing(argv[1], &app);	
-	
-	//mlx_hook(win, );
+	parsing(argv[1], &app);
+	open_window(&app, "so long");
+	draw_win(&app);
 	mlx_loop(app->mlx);
+	//mlx_hook(win, );
 	clear_app(&app);
 	return (0);
 }

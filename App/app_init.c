@@ -20,7 +20,6 @@ t_app	*app_init(int width, int height)
 	i = PIC_SIZE;
 	app = (t_app *)malloc(sizeof(t_app));
 	app->mlx = mlx_init();
-	app->window = mlx_new_window(app->mlx, width, height, "so long"); //Idk which one is height and width
 	app->wall = mlx_xpm_file_to_image(app->mlx, "assets/wall_small.xpm", &i, &i);
 	app->ground = mlx_xpm_file_to_image(app->mlx, "assets/ground_small.xpm", &i, &i);
 	app->player = mlx_xpm_file_to_image(app->mlx, "assets/player_small.xpm", &i, &i);
@@ -28,6 +27,5 @@ t_app	*app_init(int width, int height)
 	app->open_door = mlx_xpm_file_to_image(app->mlx, "assets/open_door.xpm", &i, &i);
 	app->closed_door = mlx_xpm_file_to_image(app->mlx, "assets/close_door.xpm", &i, &i);
 	app->map = NULL;
-	mlx_put_image_to_window(app->mlx, app->window, app->player, 0, 0);
 	return (app);
 }

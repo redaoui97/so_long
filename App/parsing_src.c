@@ -12,7 +12,7 @@
 
 #include "../header/so_long.h"
 
-void	check_collecs_src(t_app **app, char chr, int *collecs, int *player, int *exit)
+static void	check_collecs_src(t_app **app, char chr, int *collecs, int *player, int *exit)
 {
 	if (chr == 'C' || chr == 'c')
 		(*collecs)++;

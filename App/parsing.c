@@ -82,8 +82,6 @@ void	parsing(char *file_name, t_app **app)
 	int		lines;
 	int		i;
 
-	//collectible count (must be more than 1)
-	//player and exit count (must be only 1)
 	name = ft_strjoin("Map/", file_name);
 	lines = line_numbers(name);
 	if (line_size < 3)
@@ -97,7 +95,8 @@ void	parsing(char *file_name, t_app **app)
 	line = get_next_line(fd);
 	while (line)
 	{
-		//there is a double free when I have error 
+		//there is a double free when I call error
+		(*app)->map[i] = NULL;
 		parse_line(app, &line, &line_size, i);
 		(*app)->map[i] = line;
 		i++;
