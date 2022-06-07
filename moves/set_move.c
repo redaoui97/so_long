@@ -12,19 +12,57 @@
 
 #include "../header/so_long.h"
 
-int	set_move(t_app **app, int key)
+int	set_move(int key, t_app **app)
 {
 	if (key == 13)
 		move_up(&*app);
-	// if (key == 0)
-	// 	move_left(*app);
-	// if (key == 1)
-	// 	move_down(*app);
-	// if (key == 2)
-	// 	move_right(*app);
-	// if (key == 53)
-	// 	end_game(*app, 53);
-	// if (key == 13 || key == 0 || key == 1 || key == 2)
-	// 	draw_win(&app);
+	if (key == 0)
+		move_left(&*app);
+	if (key == 1)
+		move_down(&*app);
+	if (key == 2)
+		move_right(&*app);
+	if (key == 53)
+		finish_game(&*app);
 	return (0);
+}
+
+int	exit_game (t_app **app)
+{
+	finish_game(&*app);
+	return (0);
+}
+
+void	finish_game(t_app **app)
+{
+	if ((*app)->collecs == 0)
+	{
+		clear_app(&*app);
+		ft_printf("You won!\n");
+		free (*app);
+		exit(EXIT_SUCCESS);
+	}
+	else
+	{
+		clear_app(&*app);
+		ft_printf("You lose!\n");
+		free (*app);
+		exit(EXIT_SUCCESS);
+	}
+}
+
+void	find_player(t_app **app, int *i, int *j)
+{
+	*i = 0;
+	while ((*app)->map[*i])
+	{
+		*j = 0;
+		while ((*app)->map[*i][*j])
+		{
+			if ((*app)->map[*i][*j] == 'p' || (*app)->map[*i][*j] == 'P')
+				return ;
+			(*j)++;
+		}
+		(*i)++;
+	}
 }

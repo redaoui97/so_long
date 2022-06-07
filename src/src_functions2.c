@@ -30,6 +30,7 @@ void	error(t_app **app)
 	if ((*app)->map)
 		clear_app(&*app);
 	free(*app);
+	*app = NULL;
 	ft_printf("Error\n");
 	exit(EXIT_FAILURE);
 }

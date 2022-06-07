@@ -57,14 +57,14 @@ void    error(t_app **app);
 void    clear_app(t_app **app);
 
 /*ft_printf_functions*/
-int	ft_printf(const char *f, ...);
-int	print_str(char *str);
-int	print_nbr(int n);
-int	print_nbr_unsigned(unsigned int n);
-int	print_hex_upper(unsigned int a);
-int	print_hex_lower(unsigned int a);
-int	print_char(char chr);
-int	print_addresse(unsigned long int adr);
+int		ft_printf(const char *f, ...);
+int		print_str(char *str);
+int		print_nbr(int n);
+int		print_nbr_unsigned(unsigned int n);
+int		print_hex_upper(unsigned int a);
+int		print_hex_lower(unsigned int a);
+int		print_char(char chr);
+int		print_addresse(unsigned long int adr);
 
 /*get_next_line_functions*/
 char	*get_next_line(int fd);
@@ -87,7 +87,12 @@ void	check_collecs(t_app **app, int size, int width);
 void	draw_win(t_app **app);
 
 /*moves_functions*/
-int		set_move(t_app **app, int key);
+int		set_move(int key, t_app **app);
 void	move_up(t_app **app);
+void	move_left(t_app **app);
+void	move_right(t_app **app);
+void	move_down(t_app **app);
 void	find_player(t_app **app, int *i, int *j);
+void	finish_game(t_app **app);
+int		exit_game (t_app **app);
 #endif

@@ -12,19 +12,13 @@
 
 #include "../header/so_long.h"
 
-void	find_player(t_app **app, int *i, int *j)
+static void	check_exit(t_app **app, char *chr, char *next_chr)
 {
-	*i = 0;
-	while ((*app)->map[*i])
+	if (*next_chr == 'e' || *next_chr == 'E' && !(*app)->collecs)
 	{
-		*j = 0;
-		while ((*app)->map[*i][*j])
-		{
-			if ((*app)->map[*i][*j] == 'p' || (*app)->map[*i][*j] == 'P')
-				return ;
-			*j++;
-		}
-		*i++;
+		*chr = '0';
+		*next_chr = 'P';
+ 		finish_game(&*app);
 	}
 }
 
@@ -43,6 +37,79 @@ void	move_up(t_app **app)
 	{
 		(*app)->map[i][j] = '0';
 		(*app)->map[i - 1][j] = 'P';
+		((*app)->collecs)--;
 	}
-	draw_win(&app);
+	(*app)->moves++;
+	ft_printf("%d-%d\n", (*app)->moves, (*app)->collecs);
+	check_exit(&*app, &((*app)->map[i][j]), &((*app)->map[i - 1][j]));
+	draw_win(&*app);
+}
+
+void	move_left(t_app **app)
+{
+	int	i;
+	int	j;
+
+	find_player(&*app, &i, &j);
+	if ((*app)->map[i][j - 1] == '0')
+	{
+		(*app)->map[i][j] = '0';
+		(*app)->map[i][j - 1] = 'P';
+	}
+	if ((*app)->map[i][j - 1] == 'c' || (*app)->map[i][j - 1] == 'C')
+	{
+		(*app)->map[i][j] = '0';
+		(*app)->map[i][j - 1] = 'P';
+		((*app)->collecs)--;
+	}
+	(*app)->moves++;
+	ft_printf("%d\n", (*app)->moves);
+	check_exit(&*app, &((*app)->map[i][j]), &((*app)->map[i][j - 1]));
+	draw_win(&*app);
+}
+
+void	move_right(t_app **app)
+{
+	int	i;
+	int	j;
+
+	find_player(&*app, &i, &j);
+	if ((*app)->map[i][j + 1] == '0')
+	{
+		(*app)->map[i][j] = '0';
+		(*app)->map[i][j + 1] = 'P';
+	}
+	if ((*app)->map[i][j + 1] == 'c' || (*app)->map[i][j + 1] == 'C')
+	{
+		(*app)->map[i][j] = '0';
+		(*app)->map[i][j + 1] = 'P';
+		((*app)->collecs)--;
+	}
+	(*app)->moves++;
+	ft_printf("%d\n", (*app)->moves);
+	check_exit(&*app, &((*app)->map[i][j]), &((*app)->map[i][j + 1]));
+	draw_win(&*app);
+}
+
+void	move_down(t_app **app)
+{
+	int	i;
+	int	j;
+
+	find_player(&*app, &i, &j);
+	if ((*app)->map[i + 1][j] == '0')
+	{
+		(*app)->map[i][j] = '0';
+		(*app)->map[i + 1][j] = 'P';
+	}
+	if ((*app)->map[i + 1][j] == 'c' || (*app)->map[i + 1][j] == 'C')
+	{
+		(*app)->map[i][j] = '0';
+		(*app)->map[i + 1][j] = 'P';
+		((*app)->collecs)--;
+	}
+	(*app)->moves++;
+	ft_printf("%d\n", (*app)->moves);
+	check_exit(&*app, &((*app)->map[i][j]), &((*app)->map[i + 1][j]));
+	draw_win(&*app);
 }

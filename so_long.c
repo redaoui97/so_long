@@ -23,8 +23,8 @@ int	main(int argc, char **argv)
 	parsing(argv[1], &app);
 	open_window(&app, "so long");
 	draw_win(&app);
-	mlx_hook(app->window, 2, (1L << 3), set_move, &app);
+	mlx_hook(app->window, 2, (1L << 2), set_move, &app);
+	mlx_hook(app->window, 17, (0L), exit_game, &app);
 	mlx_loop(app->mlx);
-	clear_app(&app);
 	return (0);
 }

@@ -16,19 +16,23 @@ void	calculate_collecs(t_app **app)
 {
 	int	i;
 	int	j;
+	int	count;
 
 	i = 0;
+	count = 0;
 	while ((*app)->map[i])
 	{
 		j = 0;
 		while ((*app)->map[i][j])
 		{
 			if ((*app)->map[i][j] == 'c' || (*app)->map[i][j] == 'C')
-				(*app)->collecs++;
+				count++;
 			j++;
 		}
 		i++;
 	}
+	(*app)->collecs = count;
+	ft_printf("collecs:%d\n",(*app)->collecs);
 }
 
 static void	*find_box(t_app **app, char chr)
@@ -41,8 +45,10 @@ static void	*find_box(t_app **app, char chr)
 		return ((*app)->ground);
 	if (chr == 'c' || chr == 'C')
 		return ((*app)->collectible);
-	if (chr == 'e' || chr == 'E')
+	if (chr == 'e' || chr == 'E' && (*app)->collecs)
 		return ((*app)->closed_door);
+	if (chr == 'e' || chr == 'E' && !(*app)->collecs)
+		return ((*app)->open_door);
 	return (NULL);
 }
 
@@ -53,6 +59,7 @@ void	draw_win(t_app **app)
 	void	*box;
 
 	i = 0;
+	calculate_collecs(&*app);
 	while ((*app)->map[i])
 	{
 		j = 0;
@@ -64,5 +71,4 @@ void	draw_win(t_app **app)
 		}
 		i++;
 	}
-	calculate_collecs(&*app);
 }

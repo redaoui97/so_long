@@ -27,7 +27,7 @@ t_app	*app_init(int width, int height)
 	app->open_door = mlx_xpm_file_to_image(app->mlx, "assets/open_door.xpm", &i, &i);
 	app->closed_door = mlx_xpm_file_to_image(app->mlx, "assets/close_door.xpm", &i, &i);
 	app->moves = 0;
-	app->collecs = 0;
+	app->collecs = -1;
 	app->map = NULL;
 	return (app);
 }
