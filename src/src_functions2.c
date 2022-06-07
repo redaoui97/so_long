@@ -32,6 +32,6 @@ void	error(t_app **app, char *msg)
 	if (*app)
 		free(*app);
 	*app = NULL;
-	ft_printf("Error:%s\n", msg);
+	ft_printf("Error: %s", msg);
 	exit(EXIT_FAILURE);
 }

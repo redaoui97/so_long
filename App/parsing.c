@@ -68,7 +68,7 @@ static void check_walls(t_app **app, int size, int width)
 	while (i < size)
 	{
 		if ((*app)->map[i][0] != '1' || (*app)->map[i][width - 1] != '1')
-			error(&*app, "Invalid map: missing wall onthe edge\n");
+			error(&*app, "Invalid map: missing wall on the edge\n");
 		i++;
 	}
 }
@@ -95,7 +95,6 @@ void	parsing(char *file_name, t_app **app)
 	line = get_next_line(fd);
 	while (line)
 	{
-		//there is a double free when I call error
 		(*app)->map[i] = NULL;
 		parse_line(app, &line, &line_size, i);
 		(*app)->map[i] = line;
@@ -107,4 +106,5 @@ void	parsing(char *file_name, t_app **app)
 	check_collecs(&*app, lines, line_size);
 	close(fd);
 	free(name);
+	//need to fix move count and the close window X message
 }
