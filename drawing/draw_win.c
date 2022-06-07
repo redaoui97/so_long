@@ -65,7 +65,8 @@ void	draw_win(t_app **app)
 		while ((*app)->map[i][j])
 		{
 			box = find_box(&*app, (*app)->map[i][j]);
-			mlx_put_image_to_window((*app)->mlx, (*app)->window, box, j * PIC_SIZE, i * PIC_SIZE);
+			mlx_put_image_to_window((*app)->mlx, (*app)->window,
+				box, j * PIC_SIZE, i * PIC_SIZE);
 			j++;
 		}
 		i++;

@@ -12,7 +12,6 @@
 
 #include "header/so_long.h"
 
-
 int	main(int argc, char **argv)
 {
 	t_app	*app;

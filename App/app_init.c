@@ -20,12 +20,18 @@ t_app	*app_init(int width, int height)
 	i = PIC_SIZE;
 	app = (t_app *)malloc(sizeof(t_app));
 	app->mlx = mlx_init();
-	app->wall = mlx_xpm_file_to_image(app->mlx, "assets/wall_small.xpm", &i, &i);
-	app->ground = mlx_xpm_file_to_image(app->mlx, "assets/ground_small.xpm", &i, &i);
-	app->player = mlx_xpm_file_to_image(app->mlx, "assets/player_small.xpm", &i, &i);
-	app->collectible = mlx_xpm_file_to_image(app->mlx, "assets/collectible_small.xpm", &i, &i);
-	app->open_door = mlx_xpm_file_to_image(app->mlx, "assets/open_door.xpm", &i, &i);
-	app->closed_door = mlx_xpm_file_to_image(app->mlx, "assets/close_door.xpm", &i, &i);
+	app->wall = mlx_xpm_file_to_image(app->mlx, "assets/wall_small.xpm",
+			&i, &i);
+	app->ground = mlx_xpm_file_to_image(app->mlx, "assets/ground_small.xpm",
+			&i, &i);
+	app->player = mlx_xpm_file_to_image(app->mlx, "assets/player_small.xpm",
+			&i, &i);
+	app->collectible = mlx_xpm_file_to_image(app->mlx,
+			"assets/collectible_small.xpm", &i, &i);
+	app->open_door = mlx_xpm_file_to_image(app->mlx, "assets/open_door.xpm",
+			&i, &i);
+	app->closed_door = mlx_xpm_file_to_image(app->mlx,
+			"assets/close_door.xpm", &i, &i);
 	app->moves = 0;
 	app->collecs = -1;
 	app->map = NULL;

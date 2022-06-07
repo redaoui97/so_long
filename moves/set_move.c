@@ -27,9 +27,11 @@ int	set_move(int key, t_app **app)
 	return (0);
 }
 
-int	exit_game (t_app **app)
+int	exit_game(t_app **app)
 {
-	finish_game(&*app);
+	clear_app(&*app);
+	free (*app);
+	exit(EXIT_SUCCESS);
 	return (0);
 }
 

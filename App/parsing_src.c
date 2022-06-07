@@ -12,20 +12,21 @@
 
 #include "../header/so_long.h"
 
-static void	check_collecs_src(t_app **app, char chr, int *collecs, int *player,
-			int *exit)
+static void	check_collecs_src(t_app **app, char chr, int *collecs)
 {
 	if (chr == 'C' || chr == 'c')
 		(*collecs)++;
+	if (chr != '1' && chr != '0' && chr != 'C' && chr != 'c'
+		&& chr != 'P' && chr != 'p' && chr != 'E' && chr != 'e')
+		error(&*app, "The map has an invalid character\n");
+}
+
+static void	check_collecs_src2(t_app **app, char chr, int *player, int *exit)
+{
 	if (chr == 'P' || chr == 'p')
 		(*player)++;
 	if (chr == 'E' || chr == 'e')
 		(*exit)++;
-	if (chr != '1' && chr != '0' &&
-		chr != 'C' && chr != 'c' &&
-		chr != 'P' && chr != 'p' &&
-		chr != 'E' && chr != 'e')
-		error(&*app, "The map has an invalid character\n");
 }
 
 void	check_collecs(t_app **app, int size, int width)
@@ -45,10 +46,13 @@ void	check_collecs(t_app **app, int size, int width)
 		j = 0;
 		while ((*app)->map[i][j])
 		{
-			check_collecs_src(&*app, (*app)->map[i][j++], &collecs, &player, &exit);
+			check_collecs_src(&*app, (*app)->map[i][j], &collecs);
+			check_collecs_src2(&*app, (*app)->map[i][j++], &player, &exit);
 		}
 		i++;
 	}
-	if (player != 1 || collecs < 1 || exit < 1)
-		error(&*app, "There is less than 1 exit and collectible or the player's starting position in invalidn\n");
+	if (collecs < 1 || exit < 1)
+		error(&*app, "less than 1 exit or collectible\n");
+	if (player != 1)
+		error(&*app, "The player's startubg position in invalid\n");
 }

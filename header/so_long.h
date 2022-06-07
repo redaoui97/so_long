@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	SO_LONG_H
+#ifndef SO_LONG_H
 # define SO_LONG_H
 
 # include <stdlib.h>
@@ -21,17 +21,12 @@
 # include "mlx.h"
 
 # ifndef PIC_SIZE
-# define PIC_SIZE 64
+#  define PIC_SIZE 64
 # endif
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE    1
 # endif
-
-typedef	struct map
-{
-	//stuff
-}	t_map;
 
 typedef struct app{
 	void			*mlx;
@@ -53,8 +48,8 @@ size_t	ft_strlen(const char *s);
 char	*ft_strtrim(char const *s1, char const *set);
 
 /*src2_functions*/
-void    error(t_app **app, char *msg);
-void    clear_app(t_app **app);
+void	error(t_app **app, char *msg);
+void	clear_app(t_app **app);
 
 /*ft_printf_functions*/
 int		ft_printf(const char *f, ...);
@@ -79,7 +74,7 @@ char	*ft_strdup(const char *s1);
 
 /*App_functions*/
 t_app	*app_init(int width, int height);
-void    parsing(char *file_name, t_app **app);
+void	parsing(char *file_name, t_app **app);
 void	open_window(t_app **app, char *win_name);
 void	check_collecs(t_app **app, int size, int width);
 
@@ -94,5 +89,5 @@ void	move_right(t_app **app);
 void	move_down(t_app **app);
 void	find_player(t_app **app, int *i, int *j);
 void	finish_game(t_app **app);
-int		exit_game (t_app **app);
+int		exit_game(t_app **app);
 #endif

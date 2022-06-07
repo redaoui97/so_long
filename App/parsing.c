@@ -12,9 +12,9 @@
 
 #include "../header/so_long.h"
 
-static int line_numbers(char *file_name)
+static int	line_numbers(char *file_name)
 {
-	int 	fd;
+	int		fd;
 	char	*line;
 	int		size;
 
@@ -34,7 +34,7 @@ static int line_numbers(char *file_name)
 
 static void	parse_line(t_app **app, char **line, int *line_size, int i)
 {
-	char *to_free;
+	char	*to_free;
 
 	to_free = *line;
 	*line = ft_strtrim(*line, "\n");
@@ -45,7 +45,7 @@ static void	parse_line(t_app **app, char **line, int *line_size, int i)
 	free(to_free);
 }
 
-static void check_walls(t_app **app, int size, int width)
+static void	check_walls(t_app **app, int size, int width)
 {
 	int	i;
 	int	j;
@@ -73,38 +73,43 @@ static void check_walls(t_app **app, int size, int width)
 	}
 }
 
+static int	parse_loop(char **line, t_app **app, int *line_size, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (*line)
+	{
+		(*app)->map[i] = NULL;
+		parse_line(app, &*line, &*line_size, i);
+		(*app)->map[i] = *line;
+		i++;
+		*line = get_next_line(fd);
+	}
+	return (i);
+}
+
 void	parsing(char *file_name, t_app **app)
 {
 	char	*name;
 	char	*line;
 	int		fd;
 	int		line_size;
-	int		lines;
 	int		i;
 
 	name = ft_strjoin("Map/", file_name);
-	lines = line_numbers(name);
 	if (line_size < 3)
 		error (&*app, "Invalid map: Less then 3 rows\n");
 	fd = open(name, O_RDWR);
-	i = 0;
 	line_size = -1;
-	(*app)->map = (char **)malloc(sizeof(char *) * (lines + 1));
+	(*app)->map = (char **)malloc(sizeof(char *) * (line_numbers(name) + 1));
 	if ((*app)->map == NULL)
 		return ;
 	line = get_next_line(fd);
-	while (line)
-	{
-		(*app)->map[i] = NULL;
-		parse_line(app, &line, &line_size, i);
-		(*app)->map[i] = line;
-		i++;
-		line = get_next_line(fd);
-	}
+	i = parse_loop(&line, &*app, &line_size, fd);
 	(*app)->map[i] = line;
-	check_walls(app, lines, line_size);
-	check_collecs(&*app, lines, line_size);
+	check_walls(app, line_numbers(name), line_size);
+	check_collecs(&*app, line_numbers(name), line_size);
 	close(fd);
 	free(name);
-	//need to fix move count and the close window X message
 }
