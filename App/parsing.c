@@ -41,7 +41,7 @@ static void	parse_line(t_app **app, char **line, int *line_size, int i)
 	if (*line_size == -1)
 		*line_size = (int)ft_strlen(*line);
 	if ((int)ft_strlen(*line) != *line_size)
-		error(&*app);
+		error(&*app, "Invalid map: map not rectangular\n");
 	free(to_free);
 }
 
@@ -54,21 +54,21 @@ static void check_walls(t_app **app, int size, int width)
 	while ((*app)->map[0][i])
 	{
 		if ((*app)->map[0][i] != '1')
-			error(&*app);
+			error(&*app, "Invalid map: missing wall on the edge\n");
 		i++;
 	}
 	i = 0;
 	while ((*app)->map[size - 1][i])
 	{
 		if ((*app)->map[size - 1][i] != '1')
-			error(&*app);
+			error(&*app, "Invalid map: missing wall on the edge\n");
 		i++;
 	}
 	i = 0;
 	while (i < size)
 	{
 		if ((*app)->map[i][0] != '1' || (*app)->map[i][width - 1] != '1')
-			error(&*app);
+			error(&*app, "Invalid map: missing wall onthe edge\n");
 		i++;
 	}
 }
@@ -85,7 +85,7 @@ void	parsing(char *file_name, t_app **app)
 	name = ft_strjoin("Map/", file_name);
 	lines = line_numbers(name);
 	if (line_size < 3)
-		exit(EXIT_FAILURE);
+		error (&*app, "Invalid map: Less then 3 rows\n");
 	fd = open(name, O_RDWR);
 	i = 0;
 	line_size = -1;

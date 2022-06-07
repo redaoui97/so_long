@@ -25,12 +25,13 @@ void	clear_app(t_app **app)
 	}
 }
 
-void	error(t_app **app)
+void	error(t_app **app, char *msg)
 {
 	if ((*app)->map)
 		clear_app(&*app);
-	free(*app);
+	if (*app)
+		free(*app);
 	*app = NULL;
-	ft_printf("Error\n");
+	ft_printf("Error:%s\n", msg);
 	exit(EXIT_FAILURE);
 }

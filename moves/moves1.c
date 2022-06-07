@@ -40,7 +40,7 @@ void	move_up(t_app **app)
 		((*app)->collecs)--;
 	}
 	(*app)->moves++;
-	ft_printf("%d-%d\n", (*app)->moves, (*app)->collecs);
+	ft_printf("%d\n", (*app)->moves);
 	check_exit(&*app, &((*app)->map[i][j]), &((*app)->map[i - 1][j]));
 	draw_win(&*app);
 }

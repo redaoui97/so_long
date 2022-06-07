@@ -12,7 +12,8 @@
 
 #include "../header/so_long.h"
 
-static void	check_collecs_src(t_app **app, char chr, int *collecs, int *player, int *exit)
+static void	check_collecs_src(t_app **app, char chr, int *collecs, int *player,
+			int *exit)
 {
 	if (chr == 'C' || chr == 'c')
 		(*collecs)++;
@@ -24,7 +25,7 @@ static void	check_collecs_src(t_app **app, char chr, int *collecs, int *player, 
 		chr != 'C' && chr != 'c' &&
 		chr != 'P' && chr != 'p' &&
 		chr != 'E' && chr != 'e')
-		error(&*app);
+		error(&*app, "The map has an invalid character\n");
 }
 
 void	check_collecs(t_app **app, int size, int width)
@@ -49,5 +50,5 @@ void	check_collecs(t_app **app, int size, int width)
 		i++;
 	}
 	if (player != 1 || collecs < 1 || exit < 1)
-		error(&*app);
+		error(&*app, "There is less than 1 exit and collectible or the player's starting position in invalidn\n");
 }

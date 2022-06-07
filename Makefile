@@ -15,7 +15,7 @@ FLAGS = -Wall -Werror -Wextra -Imlx
 MLX_FLAGS = -framework OpenGL -framework AppKit -lmlx
 FUNCTIONS_main = so_long 
 FUNCTIONS_app = App/app_init App/parsing App/parsing_src App/open_win
-FUNCTIONS_drw = drawing/draw_win moves/moves1 moves/moves2 moves/set_move
+FUNCTIONS_drw = drawing/draw_win moves/moves1 moves/set_move
 FUNCTIONS_src = src/src_functions src/get_next_line src/get_next_line_utils \
 				src/src_functions2
 FUNCTIONS_printf = ft_printf/ft_printf  \

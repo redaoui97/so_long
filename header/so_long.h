@@ -53,7 +53,7 @@ size_t	ft_strlen(const char *s);
 char	*ft_strtrim(char const *s1, char const *set);
 
 /*src2_functions*/
-void    error(t_app **app);
+void    error(t_app **app, char *msg);
 void    clear_app(t_app **app);
 
 /*ft_printf_functions*/

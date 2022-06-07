@@ -32,7 +32,6 @@ void	calculate_collecs(t_app **app)
 		i++;
 	}
 	(*app)->collecs = count;
-	ft_printf("collecs:%d\n",(*app)->collecs);
 }
 
 static void	*find_box(t_app **app, char chr)

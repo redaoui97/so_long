@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 {
 	t_app	*app;
 
+	app = NULL;
 	if (argc != 2)
 		exit(EXIT_FAILURE);
 	app = app_init(256, 256);
